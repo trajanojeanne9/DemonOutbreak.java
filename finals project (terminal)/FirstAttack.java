@@ -4,6 +4,14 @@ public class FirstAttack {
 
     public static int potionClass;
 
+    private static final String[] POTION_NAMES = {
+        "Blue", "Red", "Green", "Orange", "Black", "White"
+    };
+    private static final int[] POTION_HEAL = {
+        40, 60, 80, 20, 30, 50
+    };
+
+    // Returns the player's HP, or -1 if the player died
     public static int firstAttack(Scanner input) {
         potionClass = 0;
 
@@ -15,12 +23,9 @@ public class FirstAttack {
 
         System.out.println("During the crucial time, your pouch containing the unknown potion that the master gave you suddenly glows.");
         System.out.println("Upon opening it, it flies out into the air and gives you different options for its class:");
-        System.out.println("1. Blue Potion (+40 HP)");
-        System.out.println("2. Red Potion (+60 HP)");
-        System.out.println("3. Green Potion (+80 HP)");
-        System.out.println("4. Orange Potion (+20 HP)");
-        System.out.println("5. Black Potion (+30 HP)");
-        System.out.println("6. White Potion (+50 HP)");
+        for (int i = 0; i < POTION_NAMES.length; i++) {
+            System.out.println((i + 1) + ". " + POTION_NAMES[i] + " Potion (+" + POTION_HEAL[i] + " HP)");
+        }
 
         String potionUse;
         while (true) {
@@ -34,51 +39,43 @@ public class FirstAttack {
         }
 
         if (potionUse.equalsIgnoreCase("no")) {
-            System.out.println("You chose not to use the potion. You continue fighting with your current HP of " + hp);
-        } 
-        
-        if (potionUse.equalsIgnoreCase("yes")) {
-            while (true) {
-                System.out.println("Which potion do you choose? (1-6)");
-                String choice = input.nextLine().trim();
-
-                switch (choice) {
-                    case "1":
-                        potionClass = 1;
-                        hp += 40;
-                        System.out.println("You used the Blue Potion. Your HP is now " + hp);
-                        return hp;
-                    case "2":
-                        potionClass = 2;
-                        hp += 60;
-                        System.out.println("You used the Red Potion. Your HP is now " + hp);
-                        return hp;
-                    case "3":
-                        potionClass = 3;
-                        hp += 80;
-                        System.out.println("You used the Green Potion. Your HP is now " + hp);
-                        return hp;
-                    case "4":
-                        potionClass = 4;
-                        hp += 20;
-                        System.out.println("You used the Orange Potion. Your HP is now " + hp);
-                        return hp;
-                    case "5":
-                        potionClass = 5;
-                        hp += 30;
-                        System.out.println("You used the Black Potion. Your HP is now " + hp);
-                        return hp;
-                    case "6":
-                        potionClass = 6;
-                        hp += 50;
-                        System.out.println("You used the White Potion. Your HP is now " + hp);
-                        return hp;
-                    default:
-                        System.out.println("Invalid choice. Please enter a number from 1 to 6.");
-                }
-            }
+            System.out.println("You chose not to use the potion. Being badly injured, you cannot fight anymore and was eventually killed by the demons.");
+            System.out.println("=======================");
+            System.out.println("GAME OVER");
+            System.out.println("=======================");
+            return -1;
         }
 
-        return hp;
+        while (true) {
+            System.out.println("Which potion do you choose? (1-" + POTION_NAMES.length + ")");
+            String choiceText = input.nextLine().trim();
+
+            int choice;
+            try {
+                choice = Integer.parseInt(choiceText);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number from 1 to " + POTION_NAMES.length + ".");
+                continue;
+            }
+
+            if (choice < 1 || choice > POTION_NAMES.length) {
+                System.out.println("Invalid choice. Please enter a number from 1 to " + POTION_NAMES.length + ".");
+                continue;
+            }
+
+            potionClass = choice;
+
+            if (choice == 3) {
+                System.out.println("You used the Green Potion. Its power is too much for your body to handle, and you collapse.");
+                System.out.println("=======================");
+                System.out.println("GAME OVER");
+                System.out.println("=======================");
+                return -1;
+            }
+
+            hp += POTION_HEAL[choice - 1];
+            System.out.println("You used the " + POTION_NAMES[choice - 1] + " Potion. Your HP is now " + hp);
+            return hp;
+        }
     }
 }
