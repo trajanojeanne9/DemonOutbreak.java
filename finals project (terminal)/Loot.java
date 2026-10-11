@@ -14,12 +14,16 @@ public class Loot {
         silverCoins = 15;
 
         System.out.println("Different loots also came out of the chest.");
-        System.out.println("Would you like to take one? (yes/no)");
-        String lootOpen = input.nextLine().trim();
 
-        if (!lootOpen.equalsIgnoreCase("yes") && !lootOpen.equalsIgnoreCase("no")) {
-            System.out.println("Invalid input. Please enter you answer.");
-            return loot(input);
+        String lootOpen;
+        while (true) {
+            System.out.println("Would you like to take one? (yes/no)");
+            lootOpen = input.nextLine().trim();
+
+            if (lootOpen.equalsIgnoreCase("yes") || lootOpen.equalsIgnoreCase("no")) {
+                break;
+            }
+            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
         }
 
         if (lootOpen.equalsIgnoreCase("no")) {
@@ -27,41 +31,46 @@ public class Loot {
             return 0;
         }
 
-        if (lootOpen.equalsIgnoreCase("yes")) {
-            while (true) {
-                System.out.println("Choose one loot to take:");
-                System.out.println("1. Invincibility Cloak");
-                System.out.println("2. Mask");
-                System.out.println("3. Magic Scroll");
-                System.out.println("4. Talisman");
-                System.out.println("5. Syringe");
-                System.out.println("Enter your choice (1-5): ");
-                int lootChoice = input.nextInt();
-                input.nextLine();
+        while (true) {
+            System.out.println("Choose one loot to take:");
+            System.out.println("1. Invincibility Cloak");
+            System.out.println("2. Mask");
+            System.out.println("3. Grimoire");
+            System.out.println("4. Talisman");
+            System.out.println("5. Syringe");
+            System.out.print("Enter your choice (1-5): ");
 
-                switch (lootChoice) {
-                    case 1:
-                        System.out.println("You have chosen the Invincibility Cloak. You can now become invincible for a short period of time.");
-                        return lootChoice;
-                    case 2:
-                        System.out.println("You have chosen the Mask. You can now hide your identity from enemies.");
-                        return lootChoice;
-                    case 3:
-                        System.out.println("You have chosen the Magic Scroll. You can now cast powerful spells.");
-                        return lootChoice;
-                    case 4:
-                        System.out.println("You have chosen the Talisman. You can now protect yourself from curses.");
-                        return lootChoice;
-                    case 5:
-                        System.out.println("You have chosen the Syringe. You can now heal yourself and others.");
-                        return lootChoice;
-                    default:
-                        System.out.println("Invalid choice. Please enter a number from 1 to 5.");
-                        break;
-                }
+            int lootChoice;
+            try {
+                lootChoice = Integer.parseInt(input.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number from 1 to 5.");
+                continue;
             }
-        }
 
-        return 0;
+            if (lootChoice < 1 || lootChoice > 5) {
+                System.out.println("Invalid choice. Please enter a number from 1 to 5.");
+                continue;
+            }
+
+            switch (lootChoice) {
+                case 1:
+                    System.out.println("You have chosen the Invincibility Cloak. You can now become invincible for a short period of time.");
+                    break;
+                case 2:
+                    System.out.println("You have chosen the Mask. You now have a protection against different smoke.");
+                    break;
+                case 3:
+                    System.out.println("You have chosen the Grimoire, containing ancient and forbidden spells.");
+                    break;
+                case 4:
+                    System.out.println("You have chosen the Talisman, the seal needed for the legendery weapon from the ancient times.");
+                    break;
+                case 5:
+                    System.out.println("You have chosen the Syringe, take care of it as it contain a hidden surprise.");
+                    break;
+            }
+            return lootChoice;
+        }
     }
 }
