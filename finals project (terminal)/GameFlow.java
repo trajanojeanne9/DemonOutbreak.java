@@ -1,17 +1,21 @@
 import java.util.Scanner;
- 
+
 /** Runs the story from the first attack onward, plus the "fate" menu after the ending. */
 public class GameFlow {
- 
+
     // Shared by "Go Back in Time" and "Reincarnate" (3 chances total)
     static int chancesLeft = 3;
- 
-    // Runs everything from the first zombie attack (potion choice) onward.
+
+    // Runs everything from the first attack (potion choice) onward.
     // "Go Back in Time" loops back to this same method (same name & role kept).
     // "Reincarnate" goes back to title/identification/role first, then calls this fresh.
     public static void continueStory(Scanner input, String name, int playerRole) {
- 
-        FirstAttack.firstAttack(input); // attack, damage, declaration of potions
+
+        int hp = FirstAttack.firstAttack(input); // attack, damage, declaration of potions
+        if (hp < 0) { // player died (no potion or Green Potion)
+            finishStory(input, name, playerRole, false);
+            return;
+        }
 
         String dungeonOutcome = Dungeon.dungeon(input, playerRole);
         if ("GAME OVER".equals(dungeonOutcome)) {
@@ -19,10 +23,12 @@ public class GameFlow {
             return;
         }
 
-        int lootChoice = Loot.loot(input); // abandoned building, loot choice
-        Town.town(input, Loot.goldCoins, Loot.silverCoins);
+        int lootChoice = Loot.loot(input); // treasure room, loot choice
 
-        String syringeChoice = // only applies to medics
+        String townResult = Town.town(input, Loot.goldCoins, Loot.silverCoins);
+        boolean broughtElf = townResult.equals("SLAVE BOUGHT");
+
+        String syringeChoice = // only applies to healers
                 SideQuests.healerScenario(
                         input,
                         playerRole,
@@ -48,13 +54,14 @@ public class GameFlow {
                 playerRole,
                 FirstAttack.potionClass,
                 lootChoice);
- 
+
         boolean won = BossFight.bossFight( // final boss fight
                 input,
                 playerRole,
                 FirstAttack.potionClass,
                 lootChoice,
-                syringeChoice);
+                syringeChoice,
+                broughtElf);
 
         finishStory(input, name, playerRole, won);
     }
@@ -65,8 +72,8 @@ public class GameFlow {
         System.out.println("-------------------------------------------------");
         System.out.println("       Your journey has come to an end...");
         System.out.println("");
- 
-        // OUT OF CHANCES: walang fate menu, tapos na ang laro
+
+        // OUT OF CHANCES: no fate menu, the game is over
         if (chancesLeft <= 0) {
             System.out.println(" ");
             if (won) {
@@ -77,42 +84,33 @@ public class GameFlow {
             acceptFate();
             return;
         }
- 
+
         System.out.println("  Chances left: " + chancesLeft);
         System.out.println(" ");
- 
+
         if (won) {
-            System.out.println(" Congratualations! You have already saved humanity, but life goes on.");
+            System.out.println(" Congratulations! You have already saved humanity, but life goes on.");
             System.out.println("");
             System.out.println("[1] Reincarnate - Create a new fate as a different survivor.");
             System.out.println(" ");
-            System.out.print("Choose your fate: ");
-            System.out.println(" ");
- 
-            int fate = input.nextInt();
-            input.nextLine();
- 
-            if (fate == 1) {
-                chancesLeft--; // uses 1 chance
-                reincarnate(input);
-            } else {
-                acceptFate();
-            }
- 
+
+            readChoice(input, "Choose your fate: ", 1); // only option is 1
+
+            chancesLeft--; // uses 1 chance
+            reincarnate(input);
+
         } else {
             System.out.println("  But this is not necessarily your final fate.");
             System.out.println("");
             System.out.println("[1] Go Back in Time - Change your fate and correct your mistakes.");
             System.out.println("[2] Reincarnate - Create a new fate as a different survivor.");
             System.out.println(" ");
-            System.out.print("Choose your fate: ");
-            System.out.println(" ");
- 
-            int fate = input.nextInt();
-            input.nextLine();
- 
+
+            int fate = readChoice(input, "Choose your fate: ", 2);
+
+            chancesLeft--; // uses 1 chance
+
             if (fate == 1) { // go back in time -> replay from the potion choice onward, same name & role
-                chancesLeft--; // uses 1 chance
                 System.out.println(" ");
                 System.out.println(" ");
                 System.out.println("=================================================");
@@ -123,17 +121,14 @@ public class GameFlow {
                 System.out.println("You are given another chance to change your fate.");
                 System.out.println(" ");
                 System.out.println("-------------------------------------------------");
- 
+
                 continueStory(input, name, playerRole); // back to firstAttack only, name & role stay the same
-            } else if (fate == 2) { // reincarnate
-                chancesLeft--; // uses 1 chance
+            } else { // fate == 2
                 reincarnate(input);
-            } else { // other
-                acceptFate();
             }
         }
     }
- 
+
     public static void reincarnate(Scanner input) {
         System.out.println(" ");
         System.out.println(" ");
@@ -147,16 +142,16 @@ public class GameFlow {
         System.out.println("-------------------------------------------------");
         System.out.println(" ");
         System.out.println(" ");
- 
+
         Opening.title(); // introductory, shown again from scratch
         String newName = PlayerInfo.playerInfo(input); // player info, asked again
- 
+
         if (!newName.isEmpty()) {
             int newRole = Role.playerRole(input); // role, chosen again
             continueStory(input, newName, newRole); // brand new run, starting at the very beginning
         }
     }
- 
+
     public static void acceptFate() {
         System.out.println();
         System.out.println("-------------------------------------------------");
@@ -164,5 +159,20 @@ public class GameFlow {
         System.out.println("           [The story ends here.]");
         System.out.println("-------------------------------------------------");
     }
+
+    // Asks until the player enters a whole number from 1 to max
+    private static int readChoice(Scanner input, String prompt, int max) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int choice = Integer.parseInt(input.nextLine().trim());
+                if (choice >= 1 && choice <= max) {
+                    return choice;
+                }
+            } catch (NumberFormatException e) {
+                // fall through to the message below
+            }
+            System.out.println("Invalid input. Please enter a number from 1 to " + max + ".");
+        }
+    }
 }
- 
