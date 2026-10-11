@@ -8,37 +8,38 @@ public class Town {
         System.out.println("Many people are dying, food is scarce, the soil is dry.");
         System.out.println("----------------------");
         System.out.println("You saw a burly man dragging down a child.");
-        System.out.println(". You stopped the burly man and told him to treat the child well.");
+        System.out.println("You stopped the burly man and told him to treat the child well.");
         System.out.println("He snaps at you and tells you to mind your own business, stating that the child is his slave.");
+        System.out.println("As the child's hood slips, you notice pointed ears and a faint glow in their eyes. This is no ordinary child, but an elf.");
         System.out.println("You got into a fight with him, and he tells you that if you really want the child, you must pay him 5 gold coins and 10 silver coins.");
+        System.out.println("However, you hesitated as you might need your coins for future use.");
         System.out.println("----------------------");
-        System.out.println("Would you buy the slave child? (yes/no)");
-        String buySlave = input.nextLine().trim();
 
-        if (!buySlave.equalsIgnoreCase("yes") && !buySlave.equalsIgnoreCase("no")) {
-            System.out.println("Invalid input. Please enter your answer.");
-            return town(input, goldCoins, silverCoins);
+        String buySlave;
+        while (true) {
+            System.out.println("Would you like to buy the child? (yes/no)");
+            buySlave = input.nextLine().trim();
+
+            if (buySlave.equalsIgnoreCase("yes") || buySlave.equalsIgnoreCase("no")) {
+                break;
+            }
+            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
         }
 
         if (buySlave.equalsIgnoreCase("no")) {
-            System.out.println("You have chosen not to buy the slave child. You continued on your journey with your current loots of " + goldCoins + " gold coins and " + silverCoins + " silver coins.");
+            System.out.println("You have chosen not to buy the child. You walk away, and the elf's faint glow fades behind you.");
+            System.out.println("You continued on your journey with your current loots of " + goldCoins + " gold coins and " + silverCoins + " silver coins.");
             return "NO SLAVE";
         }
 
-        if (buySlave.equalsIgnoreCase("yes")) {
-           if (goldCoins < 5 || silverCoins < 10) {
-               System.out.println("You do not have enough coins to buy the slave child.");
-               return "NO SLAVE";
-           }
-           System.out.println("You have chosen to buy the slave child. You have given 5 gold coins and 10 silver coins to the burly man.");
-           goldCoins -= 5;
-           silverCoins -= 10;
-           Loot.goldCoins = goldCoins;
-           Loot.silverCoins = silverCoins;
-           System.out.println("You continued on your journey with your current loots of " + goldCoins + " gold coins and " + silverCoins + " silver coins.");
-           return "SLAVE BOUGHT";
-        }
+        System.out.println("You have chosen to buy the child. You have given 5 gold coins and 10 silver coins to the burly man.");
+        goldCoins -= 5;
+        silverCoins -= 10;
+        Loot.goldCoins = goldCoins;
+        Loot.silverCoins = silverCoins;
 
-        return buySlave;
+        System.out.println("The elf looks up at you and whispers, \"Thank you. I will join you, and my people's legendary weapons will answer to us.\"");
+        System.out.println("You continued on your journey with your current loots of " + goldCoins + " gold coins and " + silverCoins + " silver coins.");
+        return "SLAVE BOUGHT";
     }
 }
