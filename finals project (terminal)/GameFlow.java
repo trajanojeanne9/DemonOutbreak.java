@@ -28,39 +28,28 @@ public class GameFlow {
         String townResult = Town.town(input, Loot.goldCoins, Loot.silverCoins);
         boolean broughtElf = townResult.equals("SLAVE BOUGHT");
 
-        String syringeChoice = // only applies to healers
-                SideQuests.healerScenario(
-                        input,
-                        playerRole,
-                        FirstAttack.potionClass,
-                        lootChoice);
-        SideQuests.scientistScenario(
-                input,
-                playerRole,
-                FirstAttack.potionClass,
-                lootChoice);
-        SideQuests.warriorScenario(
-                input,
-                playerRole,
-                FirstAttack.potionClass,
-                lootChoice);
-        SideQuests.assassinScenario(
-                input,
-                playerRole,
-                FirstAttack.potionClass,
-                lootChoice);
-        SideQuests.mageScenario(
-                input,
-                playerRole,
-                FirstAttack.potionClass,
-                lootChoice);
+        // Each side quest returns the player's choice about that item
+        String syringeChoice = SideQuests.healerScenario(
+                input, playerRole, FirstAttack.potionClass, lootChoice);
+        String maskChoice = SideQuests.craftmasterScenario(
+                input, playerRole, FirstAttack.potionClass, lootChoice);
+        String talismanChoice = SideQuests.fighterScenario(
+                input, playerRole, FirstAttack.potionClass, lootChoice);
+        String daggerChoice = SideQuests.assassinScenario(
+                input, playerRole, FirstAttack.potionClass, lootChoice);
+        String scrollChoice = SideQuests.mageScenario(
+                input, playerRole, FirstAttack.potionClass, lootChoice);
 
         boolean won = BossFight.bossFight( // final boss fight
                 input,
                 playerRole,
                 FirstAttack.potionClass,
                 lootChoice,
+                talismanChoice,
+                daggerChoice,
+                scrollChoice,
                 syringeChoice,
+                maskChoice,
                 broughtElf);
 
         finishStory(input, name, playerRole, won);
@@ -92,21 +81,32 @@ public class GameFlow {
             System.out.println(" Congratulations! You have already saved humanity, but life goes on.");
             System.out.println("");
             System.out.println("[1] Reincarnate - Create a new fate as a different survivor.");
+            System.out.println("[2] Accept your fate - End the story here.");
             System.out.println(" ");
 
-            readChoice(input, "Choose your fate: ", 1); // only option is 1
+            int fate = readChoice(input, "Choose your fate: ", 2);
 
-            chancesLeft--; // uses 1 chance
-            reincarnate(input);
+            if (fate == 1) {
+                chancesLeft--; // uses 1 chance
+                reincarnate(input);
+            } else {
+                acceptFate();
+            }
 
         } else {
             System.out.println("  But this is not necessarily your final fate.");
             System.out.println("");
             System.out.println("[1] Go Back in Time - Change your fate and correct your mistakes.");
             System.out.println("[2] Reincarnate - Create a new fate as a different survivor.");
+            System.out.println("[3] Accept your fate - End the story here.");
             System.out.println(" ");
 
-            int fate = readChoice(input, "Choose your fate: ", 2);
+            int fate = readChoice(input, "Choose your fate: ", 3);
+
+            if (fate == 3) {
+                acceptFate();
+                return;
+            }
 
             chancesLeft--; // uses 1 chance
 
@@ -148,6 +148,7 @@ public class GameFlow {
 
         if (!newName.isEmpty()) {
             int newRole = Role.playerRole(input); // role, chosen again
+            Role.lastMessage(); // the master gives the potion
             continueStory(input, newName, newRole); // brand new run, starting at the very beginning
         }
     }
