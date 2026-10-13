@@ -43,7 +43,7 @@ public class PlayerInfo {
                 System.exit(0);
             }
 
-            System.out.println("You have come of age to venture out of the world, complete the mission and defeat the Demon King.");
+            System.out.println("You have come of age to venture out into the world, complete the mission and defeat the Demon King.");
             return name;
         }
     }
