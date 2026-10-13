@@ -29,8 +29,8 @@ public class Dungeon {
         while (true) {
             System.out.println("Choose your path:");
             System.out.println("Path 1: The path is treacherous and full of poison. To pass it, you must be able to cast long distance attack or heal yourself.");
-            System.out.println("Path 2: The path is also dangerous, it is full of deadly traps. You must be agile or knowledgeable of different materials to pass it");
-            System.out.println("Path 3: The path is deadly, as what laid ahead of it is a general demon skilled in combat. You need to be skilled in combat in order to kill the general demon and pass the passage.");
+            System.out.println("Path 2: The path is also dangerous, it is full of deadly traps. You must be agile or knowledgeable about different materials to pass it");
+            System.out.println("Path 3: The path is deadly, as what lies ahead of it is a general demon skilled in combat. You need to be skilled in combat in order to kill the general demon and pass the passage.");
             System.out.println("--------------------");
             System.out.print("Which path do you choose? (1-3): ");
 
