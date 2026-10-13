@@ -8,7 +8,7 @@ public class Role {
 
     public static int playerRole(Scanner input) {
         System.out.println("===================");
-        System.out.println("Choose what kind of warrior do you want to be:");
+        System.out.println("Choose what kind of warrior you want to be:");
         System.out.println("===================");
         for (int i = 0; i < ROLES.length; i++) {
             System.out.println((i + 1) + ". " + ROLES[i]);
@@ -43,10 +43,10 @@ public class Role {
                 System.out.println("You are strong in close combat and can take a lot of hits.");
                 break;
             case 2:
-                System.out.println("You are a master of concealment and agility, able to get close secretely into an enemy ang attack them.");
+                System.out.println("You are a master of concealment and agility, able to get close secretly into an enemy and attack them.");
                 break;
             case 3:
-                System.out.println("You can wield powerful spells from a distance and dealt a lot of damage.");
+                System.out.println("You can wield powerful spells from a distance and deal a lot of damage.");
                 break;
             case 4:
                 System.out.println("You can heal yourself, and with enough experience, you can even regenerate yourself.");
@@ -64,6 +64,6 @@ public class Role {
         System.out.println("Before venturing out, the master of The Resistance, who also acts as your father during the training, approached you.");
         System.out.println(" He said \"This is an unknown potion, use it when the time of need has come. However, you must remember that you must not be greedy in using it as it can have dire consequences.\"");
         System.out.println("You sadly bid farewell to him, grateful for all the guidance and love that he gave you.");
-        System.out.println("Even if it saddened you to leave the place that you call home for many years, you know that you have to as you have a revenge to do.");
+        System.out.println("Even if it saddened you to leave the place that you call home for many years, you know that you have to as you have revenge to take.");
     }
 }
