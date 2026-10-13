@@ -7,6 +7,7 @@ public class NoMercyForDemons {
             Opening.backStory();
             String playerInfo= PlayerInfo.playerInfo(input);
              int playerRole = Role.playerRole(input);
+             Role.lastMessage();
              GameFlow.continueStory(input, playerInfo, playerRole);
     }
 }
