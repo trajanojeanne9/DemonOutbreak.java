@@ -75,6 +75,8 @@ public class FirstAttack {
 
             hp += POTION_HEAL[choice - 1];
             System.out.println("You used the " + POTION_NAMES[choice - 1] + " Potion. Your HP is now " + hp);
+            System.out.println("=================");
+            System.out.println("Powered by your restored hp, you manage to defeat the remaining demons and continue on your journey.");
             return hp;
         }
     }
