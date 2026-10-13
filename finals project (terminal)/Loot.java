@@ -64,10 +64,10 @@ public class Loot {
                     System.out.println("You have chosen the Grimoire, containing ancient and forbidden spells.");
                     break;
                 case 4:
-                    System.out.println("You have chosen the Talisman, the seal needed for the legendery weapon from the ancient times.");
+                    System.out.println("You have chosen the Talisman, the seal needed for the legendary weapon from the ancient times.");
                     break;
                 case 5:
-                    System.out.println("You have chosen the Syringe, take care of it as it contain a hidden surprise.");
+                    System.out.println("You have chosen the Syringe, take care of it as it contains a hidden surprise.");
                     break;
             }
             return lootChoice;
