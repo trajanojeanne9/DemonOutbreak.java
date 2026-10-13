@@ -16,7 +16,7 @@ public class FirstAttack {
         potionClass = 0;
 
         System.out.println("================");
-        System.out.println("After choosing a role, you set out on a mission to defeat the demon king.");
+        System.out.println("After choosing a role, you set out on a mission to defeat the Demon King.");
         System.out.println("While in a forest, you are suddenly ambushed by a horde of demons.");
         System.out.println("Despite fighting to the best of your ability, your inexperience makes it hard for you to hold your own against them and a demon manages to hit you, HP down to 60.");
         int hp = 60;
@@ -39,7 +39,7 @@ public class FirstAttack {
         }
 
         if (potionUse.equalsIgnoreCase("no")) {
-            System.out.println("You chose not to use the potion. Being badly injured, you cannot fight anymore and was eventually killed by the demons.");
+            System.out.println("You chose not to use the potion. Being badly injured, you cannot fight anymore and were eventually killed by the demons.");
             System.out.println("=======================");
             System.out.println("GAME OVER");
             System.out.println("=======================");
@@ -76,7 +76,7 @@ public class FirstAttack {
             hp += POTION_HEAL[choice - 1];
             System.out.println("You used the " + POTION_NAMES[choice - 1] + " Potion. Your HP is now " + hp);
             System.out.println("=================");
-            System.out.println("Powered by your restored hp, you manage to defeat the remaining demons and continue on your journey.");
+            System.out.println("Powered by your restored HP, you manage to defeat the remaining demons and continue on your journey.");
             return hp;
         }
     }
