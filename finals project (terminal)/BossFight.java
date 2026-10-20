@@ -294,7 +294,7 @@ public class BossFight {
         System.out.println(LINE);
         System.out.println(" ");
         System.out.println(reason);
-        System.out.println("The Demon King has defeated you and your party.");
+        System.out.println("The Demon King has defeated you.");
         System.out.println(" ");
         System.out.println("Once again, humanity has lost its hope...");
         System.out.println(" ");
