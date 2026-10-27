@@ -15,16 +15,20 @@ public class FirstAttack {
     public static int firstAttack(Scanner input) {
         potionClass = 0;
 
-        System.out.println("================");
+        System.out.println("==========================================================================================");
+        System.out.println();
         System.out.println("After choosing a role, you set out on a mission to defeat the Demon King.");
         System.out.println("While in a forest, you are suddenly ambushed by a horde of demons.");
-        System.out.println("Despite fighting to the best of your ability, your inexperience makes it hard for you to hold your own against them and a demon manages to hit you, HP down to 60.");
+        System.out.println("Despite fighting to the best of your ability, your inexperience makes it hard for you to\nhold your own against them and a demon manages to hit you, HP down to 60.");
         int hp = 60;
 
-        System.out.println("During the crucial time, your pouch containing the unknown potion that the master gave you suddenly glows.");
+        System.out.println("During the crucial time, your pouch containing the unknown potion that the master gave you\nsuddenly glows.");
+        System.out.println();
+        System.out.println("==========================================================================================");
+        System.out.println("");
         System.out.println("Upon opening it, it flies out into the air and gives you different options for its class:");
         for (int i = 0; i < POTION_NAMES.length; i++) {
-            System.out.println((i + 1) + ". " + POTION_NAMES[i] + " Potion (+" + POTION_HEAL[i] + " HP)");
+            System.out.println((i + 1) + "." + POTION_NAMES[i] + "  Potion (+" + POTION_HEAL[i] + "  HP)");
         }
 
         String potionUse;
@@ -39,10 +43,10 @@ public class FirstAttack {
         }
 
         if (potionUse.equalsIgnoreCase("no")) {
-            System.out.println("You chose not to use the potion. Being badly injured, you cannot fight anymore and were eventually killed by the demons.");
-            System.out.println("=======================");
+            System.out.println("You chose not to use the potion. Being badly injured, you cannot fight anymore and were\neventually killed by the demons.");
+            System.out.println("==========================================================================================");
             System.out.println("GAME OVER");
-            System.out.println("=======================");
+            System.out.println("==========================================================================================");
             return -1;
         }
 
@@ -66,17 +70,20 @@ public class FirstAttack {
             potionClass = choice;
 
             if (choice == 3) {
-                System.out.println("You used the Green Potion. Its power is too much for your body to handle, and you collapse.");
-                System.out.println("=======================");
+                System.out.println("You used the Green Potion. Its power is too much for your body to handle, and you\ncollapse.");
+                System.out.println("==========================================================================================");
                 System.out.println("GAME OVER");
-                System.out.println("=======================");
+                System.out.println("==========================================================================================");
                 return -1;
             }
 
             hp += POTION_HEAL[choice - 1];
-            System.out.println("You used the " + POTION_NAMES[choice - 1] + " Potion. Your HP is now " + hp);
-            System.out.println("=================");
-            System.out.println("Powered by your restored HP, you manage to defeat the remaining demons and continue on your journey.");
+            System.out.println();
+            System.out.println("==========================================================================================");
+            System.out.println("You used the " + POTION_NAMES[choice - 1] + "  Potion. Your HP is now " + hp);
+            System.out.println();
+            System.out.println("Powered by your restored HP, you manage to defeat the remaining demons and continue on\nyour journey.");
+            System.out.println("==========================================================================================");
             return hp;
         }
     }

@@ -6,13 +6,15 @@ public class Loot {
     public static int silverCoins = 0;
 
     public static int loot(Scanner input) {
+        System.out.println("------------------------------------------------------------------------------------------");
         System.out.println("After clearing up the dungeon, you stumble upon the treasure room.");
         System.out.println("There lay a single chest, and upon opening it you gained different loots.");
-        System.out.println("+10 gold coins.");
-        System.out.println("+15 silver coins.");
+        System.out.println("[ +10 gold coins. ]");
+        System.out.println("[ +15 silver coins. ]");
         goldCoins = 10;
         silverCoins = 15;
 
+        System.out.println();
         System.out.println("Different loots also came out of the chest.");
 
         String lootOpen;
@@ -27,18 +29,19 @@ public class Loot {
         }
 
         if (lootOpen.equalsIgnoreCase("no")) {
-            System.out.println("You have chosen not to take any loot. You continued on your journey with your current loots of " + goldCoins + " gold coins and " + silverCoins + " silver coins.");
+            System.out.println("You have chosen not to take any loot. You continued on your journey with your current\nloots of" + goldCoins + "  gold coins and" + silverCoins + "  silver coins.");
             return 0;
         }
 
         while (true) {
+            System.out.println();
             System.out.println("Choose one loot to take:");
             System.out.println("1. Invincibility Cloak");
             System.out.println("2. Mask");
             System.out.println("3. Magic Scroll");
             System.out.println("4. Talisman");
             System.out.println("5. Syringe");
-            System.out.print("Enter your choice (1-5): ");
+            System.out.print("Enter your choice (1-5):");
 
             int lootChoice;
             try {
@@ -55,18 +58,23 @@ public class Loot {
 
             switch (lootChoice) {
                 case 1:
-                    System.out.println("You have chosen the Invincibility Cloak. You can now become invincible for a short period of time.");
+                    System.out.println();
+                    System.out.println("You have chosen the Invincibility Cloak. You can now become invincible for a short period\nof time.");
                     break;
                 case 2:
+                    System.out.println();
                     System.out.println("You have chosen the Mask. You now have a protection against different smoke.");
                     break;
                 case 3:
+                    System.out.println();
                     System.out.println("You have chosen the Magic Scroll, containing ancient and forbidden spells.");
                     break;
                 case 4:
-                    System.out.println("You have chosen the Talisman, the seal needed for the legendary weapon from the ancient times.");
+                    System.out.println();
+                    System.out.println("You have chosen the Talisman, the seal needed for the legendary weapon from the ancient\ntimes.");
                     break;
                 case 5:
+                    System.out.println();
                     System.out.println("You have chosen the Syringe, take care of it as it contains a hidden surprise.");
                     break;
             }

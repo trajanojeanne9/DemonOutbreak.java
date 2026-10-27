@@ -58,27 +58,27 @@ public class GameFlow {
     private static void finishStory(Scanner input, String name, int playerRole, boolean won) {
         System.out.println(" ");
         System.out.println(" ");
-        System.out.println("-------------------------------------------------");
-        System.out.println("       Your journey has come to an end...");
+        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.println("        Your journey has come to an end...");
         System.out.println("");
 
         // OUT OF CHANCES: no fate menu, the game is over
         if (chancesLeft <= 0) {
             System.out.println(" ");
             if (won) {
-                System.out.println(" Congratulations! You saved humanity.");
+                System.out.println("  Congratulations! You saved humanity.");
             } else {
-                System.out.println("  You have no chances left. GAME OVER.");
+                System.out.println("   You have no chances left. GAME OVER.");
             }
             acceptFate();
             return;
         }
 
-        System.out.println("  Chances left: " + chancesLeft);
+        System.out.println("   Chances left:" + chancesLeft);
         System.out.println(" ");
 
         if (won) {
-            System.out.println(" Congratulations! You have already saved humanity, but life goes on.");
+            System.out.println("  Congratulations! You have already saved humanity, but life goes on.");
             System.out.println("");
             System.out.println("[1] Reincarnate - Create a new fate as a different survivor.");
             System.out.println("[2] Accept your fate - End the story here.");
@@ -94,7 +94,7 @@ public class GameFlow {
             }
 
         } else {
-            System.out.println("  But this is not necessarily your final fate.");
+            System.out.println("   But this is not necessarily your final fate.");
             System.out.println("");
             System.out.println("[1] Go Back in Time - Change your fate and correct your mistakes.");
             System.out.println("[2] Reincarnate - Create a new fate as a different survivor.");
@@ -113,14 +113,14 @@ public class GameFlow {
             if (fate == 1) { // go back in time -> replay from the potion choice onward, same name & role
                 System.out.println(" ");
                 System.out.println(" ");
-                System.out.println("=================================================");
-                System.out.println("           You chose to Go back in Time.         ");
-                System.out.println("=================================================");
+                System.out.println("==========================================================================================");
+                System.out.println("            You chose to Go back in Time.");
+                System.out.println("==========================================================================================");
                 System.out.println(" ");
-                System.out.println("          The clock turns backward...");
+                System.out.println("           The clock turns backward...");
                 System.out.println("You are given another chance to change your fate.");
                 System.out.println(" ");
-                System.out.println("-------------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------");
 
                 continueStory(input, name, playerRole); // back to firstAttack only, name & role stay the same
             } else { // fate == 2
@@ -132,14 +132,14 @@ public class GameFlow {
     public static void reincarnate(Scanner input) {
         System.out.println(" ");
         System.out.println(" ");
-        System.out.println("=================================================");
-        System.out.println("           You chose to Reincarnate.             ");
-        System.out.println("=================================================");
+        System.out.println("==========================================================================================");
+        System.out.println("            You chose to Reincarnate.");
+        System.out.println("==========================================================================================");
         System.out.println(" ");
-        System.out.println("      Your current life fades away...");
-        System.out.println("A new life begins in a world still threatened by\n                   the outbreak.");
+        System.out.println("       Your current life fades away...");
+        System.out.println("A new life begins in a world still threatened by the outbreak.");
         System.out.println(" ");
-        System.out.println("-------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------");
         System.out.println(" ");
         System.out.println(" ");
 
@@ -155,10 +155,10 @@ public class GameFlow {
 
     public static void acceptFate() {
         System.out.println();
-        System.out.println("-------------------------------------------------");
-        System.out.println("    You have chosen to accept your fate.");
-        System.out.println("           [The story ends here.]");
-        System.out.println("-------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.println("     You have chosen to accept your fate.");
+        System.out.println("            [The story ends here.]");
+        System.out.println("------------------------------------------------------------------------------------------");
     }
 
     // Asks until the player enters a whole number from 1 to max
@@ -173,7 +173,7 @@ public class GameFlow {
             } catch (NumberFormatException e) {
                 // fall through to the message below
             }
-            System.out.println("Invalid input. Please enter a number from 1 to " + max + ".");
+            System.out.println("Invalid input. Please enter a number from 1 to" + max + ".");
         }
     }
 }

@@ -3,8 +3,8 @@ import java.util.Scanner;
 /** Final stage: the Demon King. */
 public class BossFight {
 
-    private static final String LINE = "-------------------------------------------------";
-    private static final String DOUBLE_LINE = "=================================================";
+    private static final String LINE = "------------------------------------------------------------------------------------------";
+    private static final String DOUBLE_LINE = "==========================================================================================";
 
     public static boolean bossFight(Scanner input, int role, int potionClass,
                                     int lootChoice, String talismanChoice, String daggerChoice, String scrollChoice, String syringeChoice, String maskChoice, boolean broughtElf) {
@@ -12,13 +12,13 @@ public class BossFight {
 
         System.out.println(" ");
         System.out.println(LINE);
-        System.out.println("\n  You have reached the base of the Demon King, \n               the final boss.");
+        System.out.println("\nYou have reached the base of the Demon King, the final boss.");
         System.out.println(" ");
-        System.out.println("        Preparing for the final battle...");
+        System.out.println("         Preparing for the final battle...");
         System.out.println(" ");
         System.out.println(LINE);
         System.out.println(" ");
-        System.out.println("Your attacks seem to have no effect on the Demon\n                      King.");
+        System.out.println("Your attacks seem to have no effect on the Demon King.");
         System.out.println(" ");
         System.out.println("You are in a predicament...");
         System.out.println(" ");
@@ -38,7 +38,7 @@ public class BossFight {
         System.out.println("The elf steps forward and raises his hands.");
         System.out.println("\"Now is the time. My people's legendary weapons will answer to us.\"");
         System.out.println(" ");
-        System.out.println("\n  Different materials have appeared in front of\n   you, capable of defeating the Demon King.");
+        System.out.println("\nDifferent materials have appeared in front of you, capable of defeating the Demon King.");
         System.out.println(" ");
 
         if (!askYesNo(input, "Would you like to attempt to use them? (yes/no): ")) {
@@ -66,10 +66,10 @@ public class BossFight {
             case 1:
                 System.out.println(" ");
                 System.out.println(DOUBLE_LINE);
-                System.out.println("         You have chosen the Excalibur!");
+                System.out.println("          You have chosen the Excalibur!");
                 System.out.println(DOUBLE_LINE);
                 System.out.println(" ");
-                System.out.println("To wield the Excalibur, you must meet the following\nconditions:");
+                System.out.println("To wield the Excalibur, you must meet the following conditions:");
                 System.out.println(" ");
                 System.out.println("1. You must be a Fighter class.");
                 System.out.println("2. You must have 80 hp.");
@@ -78,7 +78,7 @@ public class BossFight {
                 System.out.println(LINE);
 
                 if (!askYesNo(input, "Would you like to attempt to wield the Excalibur? (yes/no): ")) {
-                    lose("You have chosen not to attempt to wield the\nExcalibur.");
+                    lose("You have chosen not to attempt to wield the Excalibur.");
                     return false;
                 }
 
@@ -93,7 +93,7 @@ public class BossFight {
                     System.out.println("Congratulations! You have saved humanity!");
                     won = true;
                 } else {
-                    lose("You do not meet the conditions to wield the\nExcalibur. The elf looks away, unable to help you further.");
+                    lose("You do not meet the conditions to wield the Excalibur. The elf looks away, unable to help you further.");
                     return false;
                 }
                 break;
@@ -102,10 +102,10 @@ public class BossFight {
             case 2:
                 System.out.println(" ");
                 System.out.println(DOUBLE_LINE);
-                System.out.println("       You have chosen the Dagger of Life!");
+                System.out.println("        You have chosen the Dagger of Life!");
                 System.out.println(DOUBLE_LINE);
                 System.out.println(" ");
-                System.out.println("To use the Dagger of Life, you must meet the \nfollowing conditions:");
+                System.out.println("To use the Dagger of Life, you must meet the following conditions:");
                 System.out.println(" ");
                 System.out.println("1. You must be an Assassin class.");
                 System.out.println("2. You must have 90 hp.");
@@ -129,7 +129,7 @@ public class BossFight {
                     System.out.println("Congratulations! You have saved humanity!");
                     won = true;
                 } else {
-                    lose("You do not meet the conditions to use the Dagger of Life.\nThe elf looks away, unable to help you further.");
+                    lose("You do not meet the conditions to use the Dagger of Life. The elf looks away, unable to help you further.");
                     return false;
                 }
                 break;
@@ -138,10 +138,10 @@ public class BossFight {
             case 3:
                 System.out.println(" ");
                 System.out.println(DOUBLE_LINE);
-                System.out.println("         You have chosen the Grimoire!");
+                System.out.println("          You have chosen the Grimoire!");
                 System.out.println(DOUBLE_LINE);
                 System.out.println(" ");
-                System.out.println("To channel the Grimoire, you must meet the following\nconditions:");
+                System.out.println("To channel the Grimoire, you must meet the following conditions:");
                 System.out.println(" ");
                 System.out.println("1. You must be a Mage class.");
                 System.out.println("2. You must have 100 hp.");
@@ -150,7 +150,7 @@ public class BossFight {
                 System.out.println(LINE);
 
                 if (!askYesNo(input, "Would you like to attempt to channel the Grimoire? (yes/no): ")) {
-                    lose("You have chosen not to attempt to channel the\nGrimoire.");
+                    lose("You have chosen not to attempt to channel the Grimoire.");
                     return false;
                 }
 
@@ -165,7 +165,7 @@ public class BossFight {
                     System.out.println("Congratulations! You have saved humanity!");
                     won = true;
                 } else {
-                    lose("You do not meet the conditions to channel the\nGrimoire. The elf looks away, unable to help you further.");
+                    lose("You do not meet the conditions to channel the Grimoire. The elf looks away, unable to help you further.");
                     return false;
                 }
                 break;
@@ -174,10 +174,10 @@ public class BossFight {
             case 4:
                 System.out.println(" ");
                 System.out.println(DOUBLE_LINE);
-                System.out.println("       You have chosen the Poisonous Smoke!      ");
+                System.out.println("        You have chosen the Poisonous Smoke!");
                 System.out.println(DOUBLE_LINE);
                 System.out.println(" ");
-                System.out.println("To use the Poisonous Smoke, you must meet the \nfollowing conditions:");
+                System.out.println("To use the Poisonous Smoke, you must meet the following conditions:");
                 System.out.println(" ");
                 System.out.println("1. You must be a Craftmaster class.");
                 System.out.println("2. You must have 110 hp.");
@@ -186,7 +186,7 @@ public class BossFight {
                 System.out.println(LINE);
 
                 if (!askYesNo(input, "Would you like to attempt to use the Poisonous Smoke? (yes/no): ")) {
-                    lose("You have chosen not to attempt to use the Poisonous\n                    Smoke.");
+                    lose("You have chosen not to attempt to use the Poisonous Smoke.");
                     return false;
                 }
 
@@ -201,7 +201,7 @@ public class BossFight {
 
                     String extract;
                     while (true) {
-                        System.out.print("Would you like to capture the Demon King and extract his DNA or kill him? (extract/kill): ");
+                        System.out.print("Would you like to capture the Demon King and extract his DNA or kill him? (extract/kill):");
                         extract = input.nextLine().trim();
                         if (extract.equalsIgnoreCase("extract") || extract.equalsIgnoreCase("kill")) {
                             break;
@@ -214,10 +214,10 @@ public class BossFight {
                     if (extract.equalsIgnoreCase("extract")) {
                         System.out.println("You have successfully extracted the Demon King's DNA!");
                         System.out.println(DOUBLE_LINE);
-                        System.out.println("              * SECRET ENDING *              ");
+                        System.out.println("               * SECRET ENDING *");
                         System.out.println(DOUBLE_LINE);
-                        System.out.println("After the battle, you go back to your laboratory to analyze the sample. You unexpectedly spill the sample on your wound.");
-                        System.out.println("You feel a strange sensation, and you look at the mirror and see that you become the new Demon King.");
+                        System.out.println("After the battle, you go back to your laboratory to analyze the sample. You unexpectedly\nspill the sample on your wound.");
+                        System.out.println("You feel a strange sensation, and you look at the mirror and see that you become the new\nDemon King.");
                         System.out.println(" ");
                         System.out.println("Congratulations! You saved humanity...... or did you?");
                     } else {
@@ -228,7 +228,7 @@ public class BossFight {
                     }
                     won = true;
                 } else {
-                    lose("You do not meet the conditions to use the Poisonous\n                    Smoke. The elf looks away, unable to help you further.");
+                    lose("You do not meet the conditions to use the Poisonous Smoke. The elf looks away, unable to help you further.");
                     return false;
                 }
                 break;
@@ -237,10 +237,10 @@ public class BossFight {
             case 5:
                 System.out.println(" ");
                 System.out.println(DOUBLE_LINE);
-                System.out.println("       You have chosen the Elixir of Life!     ");
+                System.out.println("        You have chosen the Elixir of Life!");
                 System.out.println(DOUBLE_LINE);
                 System.out.println(" ");
-                System.out.println("To use the Elixir of Life, you must meet the\n following conditions:");
+                System.out.println("To use the Elixir of Life, you must meet the following conditions:");
                 System.out.println(" ");
                 System.out.println("1. You must be a Healer class.");
                 System.out.println("2. You must have 120 hp.");
@@ -259,22 +259,22 @@ public class BossFight {
                     System.out.println("The Elixir of Life glows brightly as the elf's power flows through it.");
                     System.out.println(" ");
                     System.out.println("You lower your weapon.");
-                    System.out.println("\nInstead of striking the Demon King, you plunge the \nElixir of Life into him, hoping that it \n                  can still save him.");
+                    System.out.println("\nInstead of striking the Demon King, you plunge the Elixir of Life into him, hoping that it\ncan still save him.");
                     System.out.println(" ");
-                    System.out.println("The virus burns away, his skin slowly returns to normal, and his empty, dead eyes slowly get their color back.");
+                    System.out.println("The virus burns away, his skin slowly returns to normal, and his empty, dead eyes slowly\nget their color back.");
                     System.out.println(" ");
                     System.out.println("The Demon King collapses to his knees... once a monster, now a man.");
                     System.out.println(" ");
                     System.out.println(DOUBLE_LINE);
-                    System.out.println("              * SECRET ENDING *              ");
-                    System.out.println("     You found the true cure, and saved humanity   ");
-                    System.out.println("            without spilling more blood.          ");
+                    System.out.println("               * SECRET ENDING *");
+                    System.out.println("      You found the true cure, and saved humanity");
+                    System.out.println("             without spilling more blood.");
                     System.out.println(DOUBLE_LINE);
                     System.out.println(" ");
-                    System.out.println("Congratulations! You have saved humanity... and \n                redeemed a King.");
+                    System.out.println("Congratulations! You have saved humanity... and redeemed a King.");
                     won = true;
                 } else {
-                    lose("You do not meet the conditions to use the Elixir of Life.\nThe elf looks away, unable to help you further.");
+                    lose("You do not meet the conditions to use the Elixir of Life. The elf looks away, unable to help you further.");
                     return false;
                 }
                 break;
@@ -299,7 +299,7 @@ public class BossFight {
         System.out.println("Once again, humanity has lost its hope...");
         System.out.println(" ");
         System.out.println(LINE);
-        System.out.println("               [[ Game Over. ]]");
+        System.out.println("                [[ Game Over. ]]");
     }
 
     // Asks until the answer is yes or no. Returns true for yes.
@@ -329,7 +329,7 @@ public class BossFight {
             } catch (NumberFormatException e) {
                 // fall through to the message below
             }
-            System.out.println("Invalid input. Please enter a number from 1 to " + max + ".");
+            System.out.println("Invalid input. Please enter a number from 1 to" + max + ".");
         }
     }
 }

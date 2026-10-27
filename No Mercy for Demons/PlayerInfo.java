@@ -4,9 +4,9 @@ public class PlayerInfo {
 
     public static String playerInfo(Scanner input) {
         while (true) { // outer loop: restarts from name
-            System.out.println("================================");
+            System.out.println("==========================================================================================");
 
-            System.out.print("Enter your name: ");
+            System.out.print("Enter your name:");
             String name = input.nextLine();
             if (name.trim().isEmpty()) {
                 System.out.println("Name cannot be empty. Please enter your name.");
@@ -15,7 +15,7 @@ public class PlayerInfo {
 
             int age;
             while (true) { // inner loop: re-asks age only
-                System.out.print("Enter your age: ");
+                System.out.print("Enter your age:");
                 String ageInput = input.nextLine().trim();
 
                 try {
@@ -39,11 +39,11 @@ public class PlayerInfo {
             }
 
             if (age < 18) {
-                System.out.println("You do not have enough experience to fight the demons, train more and come back when you are stronger.");
+                System.out.println("You do not have enough experience to fight the demons, train more and come back when you\nare stronger.");
                 System.exit(0);
             }
 
-            System.out.println("You have come of age to venture out into the world, complete the mission and defeat the Demon King.");
+            System.out.println("You have come of age to venture out into the world, complete the mission and defeat the\nDemon King.");
             return name;
         }
     }
